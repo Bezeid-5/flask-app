@@ -66,7 +66,7 @@ def login():
     user = User.query.filter_by(username=username).first()
     if user and password == user.password:
         session['auth'] = True
-        return redirect(url_for('clients'))
+        return redirect(url_for('homme'))
     else:
         return redirect(url_for('index'))
     
@@ -82,7 +82,7 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
         session['auth'] = True
-        return redirect(url_for('clients'))
+        return redirect(url_for('homme'))
     else:
         return render_template('signup.html')
 
@@ -90,7 +90,12 @@ def signup():
 def logout():
     session.clear()
     return redirect(url_for('index'))
-
+@app.route('/homme')
+def homme():
+    if session :
+        return render_template('homme.html')
+    else :
+        return redirect(url_for('index'))
 @app.route('/clients')
 def clients():
     if session :
@@ -222,7 +227,7 @@ def edit_intervention(intervention_id):
     intervention = Intervention.query.filter_by(id=intervention_id).first()
     if request.method == 'POST':
         date_str = request.form['date']
-        intervention.date = datetime.strptime(date_str, '%Y-%m-%d') 
+        intervention.date = datetime.strptime(date_str, '%Y-%m-%d')
         intervention.type = request.form['type']
         intervention.motive = request.form['motive']
         intervention.etat = request.form['etat']
@@ -234,7 +239,7 @@ def edit_intervention(intervention_id):
     intervenants = Intervenant.query.all()
     return render_template('edit_intervention.html', intervention = intervention, clients = clients, intervenants = intervenants)
 def graphe():
-    total_realisee = Intervention.query.filter_by(etat="réalisée").count() 
+    total_realisee = Intervention.query.filter_by(etat="réalisée").count()
     if total_realisee == 0:
         labels = []
         values = []
