@@ -88,11 +88,11 @@
             flex-grow: 1;
         }
 
-        .ajou {
+        .btn {
             transition: transform 0.3s ease;
         }
 
-        .ajou:hover {
+        .btn:hover {
             transform: scale(1.2);
         }
 
@@ -177,18 +177,18 @@
         </script>
 
         <div class="text-center m-1">
-            <a href="{{ url_for('intervenant_form') }}"><img class="ajou" src="static/plus.png" width="40" height="40" title="ajouter un Intervenant"></a>
+            <a class="btn btn-primary" href="{{ url_for('intervenant_form') }}">ajouter</a>
         </div>
 
         <div class="container-fluid">
-            <table id="myTable" class="table table-hover mt-4">
+            <table id="myTable" class="table table-hover mt-4 text-center" style="width: 80%; margin: auto;">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Prénom</th>
                         <th scope="col">Poste</th>
-                        <th scope="col" colspan="2">Actions</th>
+                        <th scope="col"class="text-center" colspan="2">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -199,14 +199,14 @@
                         <td>{{ Intervenant.prenom }}</td>
                         <td>{{ Intervenant.poste }}</td>
                         <td>
-                            <a href="{{ url_for('edit_intervenant', intervenant_id=Intervenant.id) }}">
-                                <img src="static/draw.png" width="50" height="50" title="modifier un intervenant">
+                            <a class="btn btn-info" style="color: #fff;" href="{{ url_for('edit_intervenant', intervenant_id=Intervenant.id) }}">
+                                modifier
                             </a>
                         </td>
                         <td>
-                            <a href="{{ url_for('delete_intervenant', intervenant_id=Intervenant.id) }}"
+                            <a class="btn btn-danger" href="{{ url_for('delete_intervenant', intervenant_id=Intervenant.id) }}"
                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet intervenant ?')">
-                                <img src="static/delete.png" width="50" height="50" title="supprimer un intervenant">
+                               supprimer
                             </a>
                         </td>
                     </tr>

@@ -7,7 +7,7 @@ import plotly.io as pio
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mini_projet.sqlite3'
-app.config['SECRET_KEY'] = 'mini_projet'
+app.config['SECRET_KEY'] = 'Zeiny-code hello ??'
 db = SQLAlchemy(app)
 
 # Création des modèles de données
@@ -161,7 +161,7 @@ def add_client():
 def add_intervention():
     if request.method == 'POST':
         date_str = request.form.get('date')
-        date = datetime.strptime(date_str, '%Y-%m-%d') 
+        date = datetime.strptime(date_str, '%Y-%m-%d')
         intervention_type = request.form.get('type')
         motive = request.form.get('motive')
         etat = request.form.get('etat')

@@ -80,11 +80,11 @@
             padding-bottom: 20px;
         } */
 
-        .ajou {
+        .btn {
             transition: transform 0.3s ease;
         }
 
-        .ajou:hover {
+        .btn:hover {
             transform: scale(1.2);
         }
     </style>
@@ -166,19 +166,19 @@
                 </script>
     
                 <div class="text-center">
-                    <a href="{{ url_for('clients_form') }}"><img class="ajou" src="static/plus.png" width="40" height="40"
-                            title="ajouter un client"></a>
+                    <a class="btn btn-primary" href="{{ url_for('clients_form') }}">
+                           ajouter</a>
                 </div>
     
                 <div class="container-fluid">
-                    <table id="myTable" class="table table-hover mt-4" style="width: 95%; margin: auto;">
+                    <table id="myTable" class="table table-hover mt-4 text-center" style="width: 80%; margin: auto;">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Prénom</th>
                                 <th scope="col">Direction</th>
-                                <th scope="col" colspan="2">Actions</th>
+                                <th scope="col"  colspan="2">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -189,14 +189,14 @@
                                 <td>{{ client.prenom }}</td>
                                 <td>{{ client.direction }}</td>
                                 <td>
-                                    <a href="{{ url_for('edit_client', client_id=client.id) }}">
-                                        <img src="static/draw.png" width="40" height="40" title="modifier un client">
+                                    <a class="btn btn-info" style="color: #fff;"  href="{{ url_for('edit_client', client_id=client.id) }}">
+                                        modifier
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ url_for('delete_client', client_id=client.id) }}"
+                                    <a class="btn btn-danger" href="{{ url_for('delete_client', client_id=client.id) }}"
                                         onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet client ?')">
-                                        <img src="static/delete.png" width="40" height="40" title="supprimer un client">
+                                        supprimer
                                     </a>
                                 </td>
                             </tr>
